@@ -23,7 +23,7 @@ namespace WpfApp1
             
             year, string month, string day)
         {
-            this.id = id + "@hancomgmd.com";
+            this.id = id;
             this.pw = pw;
             this.pwCheck = pwCheck;
             this.name = name;
@@ -38,9 +38,6 @@ namespace WpfApp1
             return $"ID: {id}\n" +
                 $"PW: {pw}\n" +
                 $"PW Check: {pwCheck}\n" +
-
-
-
                 $"Name: {name}\n" +
                 $"Gender: {gender}\n" +
                 $"Birth: {year}/{month}/{day}\n";

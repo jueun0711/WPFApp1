@@ -8,57 +8,67 @@
         Title="MainWindow" Height="450" Width="800"
         Background="#F5F6F7">
     <Grid>
-        <StackPanel Width="480" Height="400" Margin="30, 10, 30, 10">
-            <TextBlock FontSize="30" FontWeight="Bold" Text="HancomGMD" Foreground="#3CBB16" TextAlignment="Center" Margin="0, 10, 0, 10"/>
-            <StackPanel Margin="0, 10, 0, 10" Background="White">
-                <Border BorderThickness="0.5" BorderBrush="Gray" Height="45">
-                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="10 0 10 0">
-                        <!--TextBlock Text="아이디"></TextBlock-->
-                        <TextBox x:Name="ID" BorderThickness="0" FontWeight="Light" Foreground="Gray" Width="330" FontSize="14">아이디</TextBox>
-                        <TextBlock Text="@hancomgmd.com"  Foreground="DimGray" FontSize="14"></TextBlock>
-                    </StackPanel>
-                </Border>
-                <Border BorderThickness="0.5 0 0.5 0" BorderBrush="Gray" Height="45">
-                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="10 0 10 0">
-                        <!--TextBlock Text="비밀번호"></TextBlock-->
-                        <PasswordBox x:Name="PW1" PasswordChar="*" BorderThickness="0"></PasswordBox>
-                    </StackPanel>
-                </Border>
-                <Border BorderThickness="0.5" BorderBrush="Gray" Height="45">
-                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="10 0 10 0">
-                        <!--TextBlock Text="비밀번호 재확인" Width="100"></TextBlock-->
-                        <PasswordBox x:Name="PW2" PasswordChar="*" BorderThickness="0"></PasswordBox>
-                    </StackPanel>
-                </Border>
+        <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
+            <StackPanel Width="480" Height="390" Margin="30, 10, 30, 10">
+                <TextBlock Text="HancomGMD" Style="{DynamicResource Title}" Margin="0, 10, 0, 10"/>
+                <StackPanel Background="White" Margin="0, 10, 0, 10">
+                    <Border BorderThickness="0.5" Style="{DynamicResource ContentBorder}">
+                        <StackPanel Style="{DynamicResource ContentStackPanelHo}">
+                            <TextBox x:Name="ID" TextChanged="IDBoxHint" Style="{DynamicResource IDNameBox}">
+                                <TextBox.Background>
+                                    <ImageBrush ImageSource="Image/IDBackground.jpg" AlignmentX="Left" Stretch="Uniform"/>
+                                </TextBox.Background>
+                            </TextBox>
+                            <TextBlock Text="@hancomgmd.com" Foreground="DimGray" FontSize="14"></TextBlock>
+                        </StackPanel>
+                    </Border>
+                    <Border BorderThickness="0.5 0 0.5 0" Style="{DynamicResource ContentBorder}">
+                        <StackPanel Style="{DynamicResource ContentStackPanelHo}">
+                            <PasswordBox x:Name="PW" PasswordChanged="PWBoxHint" Style="{DynamicResource PWBox}">
+                                <PasswordBox.Background>
+                                    <ImageBrush ImageSource="Image/PWBackground.jpg" AlignmentX="Left" Stretch="Uniform"/>
+                                </PasswordBox.Background>
+                            </PasswordBox>
+                        </StackPanel>
+                    </Border>
+                    <Border BorderThickness="0.5" Style="{DynamicResource ContentBorder}">
+                        <StackPanel Style="{DynamicResource ContentStackPanelHo}">
+                            <PasswordBox x:Name="PWCheck" PasswordChanged="PWCheckBoxHint" Style="{DynamicResource PWBox}">
+                                <PasswordBox.Background>
+                                    <ImageBrush ImageSource="Image/PWCheckBackground.jpg" AlignmentX="Left" Stretch="Uniform"/>
+                                </PasswordBox.Background>
+                            </PasswordBox>
+                        </StackPanel>
+                    </Border>
+                </StackPanel>
+                <StackPanel Margin="0, 0, 0, 10" Background="White">
+                    <Border BorderThickness="0.5" Style="{DynamicResource ContentBorder}">
+                        <StackPanel Style="{DynamicResource ContentStackPanelHo}">
+                            <TextBox x:Name="Name" TextChanged="NameBoxHint" Style="{DynamicResource IDNameBox}">
+                                <TextBox.Background>
+                                    <ImageBrush ImageSource="Image/NameBackground.jpg" AlignmentX="Left" Stretch="Uniform"/>
+                                </TextBox.Background>
+                            </TextBox>
+                            <RadioButton GroupName="Gender" x:Name="Male" Checked="changeGender" Content="남자" Style="{DynamicResource GenderRadio}"/>
+                            <RadioButton GroupName="Gender" x:Name="Female" Checked="changeGender" Content="여자" Style="{DynamicResource GenderRadio}"/>
+                        </StackPanel>
+                    </Border>
+                    <Border BorderThickness="0.5 0 0.5 0.5" Style="{DynamicResource ContentBorder}">
+                        <StackPanel Style="{DynamicResource ContentStackPanelHo}">
+                            <Border BorderThickness="0 0 0.5 0" Style="{DynamicResource ContentBorder}">
+                                <TextBlock Text="생일" Style="{DynamicResource BirthTextBlock}" Margin="5 0 15 0"></TextBlock>
+                            </Border>
+                            <TextBox x:Name="Year" TextCompositionManager.PreviewTextInput="InputOnlyInt" Style="{DynamicResource BirthTextBox}"/>
+                            <TextBlock Text="년" Style="{DynamicResource BirthTextBlock}"/>
+                            <TextBox x:Name="Month" TextCompositionManager.PreviewTextInput="InputOnlyInt" Style="{DynamicResource BirthTextBox}"/>
+                            <TextBlock Text="월" Style="{DynamicResource BirthTextBlock}"/>
+                            <TextBox x:Name="Day" TextCompositionManager.PreviewTextInput="InputOnlyInt" Style="{DynamicResource BirthTextBox}"/>
+                            <TextBlock Text="일" Style="{DynamicResource BirthTextBlock}"/>
+                        </StackPanel>
+                    </Border>
+                </StackPanel>
+                <Button x:Name="SignIn" ClickMode="Press" Content="가입하기" Click="BtnPress" Style="{DynamicResource SignInBtn}"/>
             </StackPanel>
-            <StackPanel Margin="0, 0, 0, 10" Background="White">
-                <Border BorderThickness="0.5" BorderBrush="Gray" Height="45">
-                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="10 0 10 0">
-                        <!--TextBlock Text="이름"></TextBlock-->
-                        <TextBox x:Name="Name" BorderThickness="0" FontSize="14" Foreground="Gray" Width="330">이름</TextBox>
-                        <!--TextBlock Text="Gender"/-->
-                        <RadioButton GroupName="Gender" Checked="changeGender" FontSize="14" Foreground="Gray" x:Name="Male" Width="60">남자</RadioButton>
-                        <!--IsChecked="True"-->
-                        <RadioButton GroupName="Gender" Checked="changeGender" FontSize="14" Foreground="Gray" x:Name="Female" Width="50">여자</RadioButton>
-                    </StackPanel>
-                </Border>
-                <Border BorderThickness="0.5 0 0.5 0.5" BorderBrush="Gray" Height="45">
-                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
-                        <Border BorderThickness="0 0 0.5 0" BorderBrush="Gray" Height="45">
-                            <TextBlock Text="생일" Foreground="Gray" FontSize="14" VerticalAlignment="Center" Margin="10 0 10 0"></TextBlock>
-                        </Border>
-                        <TextBox x:Name="Year" BorderThickness="0" Width="70" VerticalAlignment="Center" TextAlignment="Right" TextCompositionManager.PreviewTextInput="InputOnlyInt"></TextBox>
-                        <TextBlock Text="년" Foreground="Gray" FontSize="14" VerticalAlignment="Center"></TextBlock>
-                        <TextBox x:Name="Month" BorderThickness="0" Width="70" VerticalAlignment="Center" TextAlignment="Right" TextCompositionManager.PreviewTextInput="InputOnlyInt"></TextBox>
-                        <TextBlock Text="월" Foreground="Gray" FontSize="14" VerticalAlignment="Center"></TextBlock>
-                        <TextBox x:Name="Day" BorderThickness="0" Width="70" VerticalAlignment="Center" TextAlignment="Right" TextCompositionManager.PreviewTextInput="InputOnlyInt"></TextBox>
-                        <TextBlock Text="일" Foreground="Gray" FontSize="14" VerticalAlignment="Center"></TextBlock>
-                        <!--DatePicker x:Name="Birth"></DatePicker-->
-                    </StackPanel>
-                </Border>
-            </StackPanel>
-            <Button x:Name="SignIn" Background="#3CBB16" Foreground="White" ClickMode="Press" Content="가입하기" Click="BtnPress"
-                    BorderThickness="0" Height="60" FontSize="20"/>
-        </StackPanel>
+        </ScrollViewer>
     </Grid>
 </Window>

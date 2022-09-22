@@ -18,12 +18,6 @@ using System.Windows.Shapes;
 
 namespace WpfApp1
 {
-    /// <summary>
-    /// MainWindow.xaml에 대한 상호 작용 논리
-    /// </summary>\
-
-    
-
     public partial class MainWindow : Window
     {
         private RadioButton gender;
@@ -31,28 +25,89 @@ namespace WpfApp1
         public MainWindow()
         {
             InitializeComponent();
-            //Birth.SelectedDate = DateTime.Today;
         }
 
         public void BtnPress(object sender, RoutedEventArgs e)
         {
-            //string text = ID.Text;
-            //MessageBox.Show($"{text}");
-            //var gender = (sender as RadioButton);
-            /*var birth = Birth.SelectedDate.Value.ToString("yyyy.MM.dd");
-            var year = birth.Split('.')[0];
-            var month = birth.Split('.')[1];
-            var day = birth.Split('.')[2];
-            */
-            
             if(IsVaild() == true)
             {
-                var user = new User(ID.Text, PW1.Password, PW2.Password, Name.Text, gender.Name.ToString(), Year.Text, Month.Text, Day.Text);
-                //var user = new User(ID.Text, PW1.Password, PW2.Password, Name.Text, gender.Name.ToString(), year, month, day);
-
-                MessageBox.Show($"{user}");
+                var user = new User(ID.Text, PW.Password, PWCheck.Password, Name.Text, gender.Name.ToString(), Year.Text, Month.Text, Day.Text);
+                MessageBox.Show("가입이 완료 되었습니다.");
             }
             
+        }
+
+        public void IDBoxHint(object sender, TextChangedEventArgs e)
+        {
+            if(ID.Text.Length == 0)
+            {
+                ImageBrush imageBrush = new ImageBrush();
+                imageBrush.ImageSource = 
+                    new BitmapImage(new Uri(@"C:\Users\user\source\repos\WpfApp1\WpfApp1\Image\IDBackground.jpg", UriKind.Relative));
+                imageBrush.AlignmentX = AlignmentX.Left;
+                imageBrush.Stretch = Stretch.Uniform;
+                ID.Background = imageBrush;
+            }
+            else
+            {
+                ID.Background = null;
+            }
+        }
+
+        //public void IDBoxFocusOn(object sender, RoutedEventArgs e)
+        //{
+        //    ID.Background = null;
+        //}
+
+        public void PWBoxHint(object sender, RoutedEventArgs e)
+        {
+            if (PW.Password.Length == 0)
+            {
+                ImageBrush imageBrush = new ImageBrush();
+                imageBrush.ImageSource =
+                    new BitmapImage(new Uri(@"C:\Users\user\source\repos\WpfApp1\WpfApp1\Image\PWBackground.jpg", UriKind.Relative));
+                imageBrush.AlignmentX = AlignmentX.Left;
+                imageBrush.Stretch = Stretch.Uniform;
+                PW.Background = imageBrush;
+            }
+            else
+            {
+                PW.Background = null;
+            }
+        }
+
+        public void PWCheckBoxHint(object sender, RoutedEventArgs e)
+        {
+            if (PWCheck.Password.Length == 0)
+            {
+                ImageBrush imageBrush = new ImageBrush();
+                imageBrush.ImageSource =
+                    new BitmapImage(new Uri(@"C:\Users\user\source\repos\WpfApp1\WpfApp1\Image\PWCheckBackground.jpg", UriKind.Relative));
+                imageBrush.AlignmentX = AlignmentX.Left;
+                imageBrush.Stretch = Stretch.Uniform;
+                PWCheck.Background = imageBrush;
+            }
+            else
+            {
+                PWCheck.Background = null;
+            }
+        }
+
+        public void NameBoxHint(object sender, TextChangedEventArgs e)
+        {
+            if (Name.Text.Length == 0)
+            {
+                ImageBrush ImageBrush = new ImageBrush();
+                ImageBrush.ImageSource =
+                    new BitmapImage(new Uri(@"C:\Users\user\source\repos\WpfApp1\WpfApp1\Image\NameBackground.jpg", UriKind.Relative));
+                ImageBrush.AlignmentX = AlignmentX.Left;
+                ImageBrush.Stretch = Stretch.Uniform;
+                Name.Background = ImageBrush;
+            }
+            else
+            {
+                Name.Background = null;
+            }
         }
 
         private void changeGender(object sender, RoutedEventArgs e)
@@ -74,11 +129,11 @@ namespace WpfApp1
             {
                 msg = "아이디를 입력해주세요.";
             }
-            else if (PW1.Password.Length == 0)
+            else if (PW.Password.Length == 0)
             {
                 msg = "비밀번호를 입력해주세요.";
             }
-            else if (PW2.Password.Length == 0)
+            else if (PWCheck.Password.Length == 0)
             {
                 msg = "비밀번호를 재확인해주세요.";
             }
@@ -94,7 +149,7 @@ namespace WpfApp1
             {
                 msg = "생일을 입력해주세요.";
             }
-            else if (PW1.Password != PW2.Password)
+            else if (PW.Password != PWCheck.Password)
             {
                 msg = "비밀번호가 일치하지 않습니다.\n입력하신 내용을 다시 확인해주세요.";
             }
