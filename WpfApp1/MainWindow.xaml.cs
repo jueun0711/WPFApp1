@@ -177,9 +177,9 @@ namespace WpfApp1
             return false;
         }
 
-        private void IdNullText_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
-        {
-            IdNullText.Visibility = Visibility.Collapsed;
-        }
+//         private void IdNullText_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+//         {
+//             IdNullText.Visibility = Visibility.Collapsed;
+//         }
     }
 }
