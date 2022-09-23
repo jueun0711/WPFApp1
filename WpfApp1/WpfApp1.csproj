@@ -102,6 +102,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="Image\BirthBackground.jpg" />
     <Resource Include="Image\IDBackground.jpg" />
     <Resource Include="Image\NameBackground.jpg" />
     <Resource Include="Image\PWBackground.jpg" />

@@ -5,12 +5,16 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApp1"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800"
+        Title="MainWindow" Height="450" MinHeight="450" Width="560" MinWidth="560"
         Background="#F5F6F7">
     <Grid>
         <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
             <StackPanel Width="480" Height="390" Margin="30, 10, 30, 10">
                 <TextBlock Text="HancomGMD" Style="{DynamicResource Title}" Margin="0, 10, 0, 10"/>
+                <!--Grid Height="48">
+                    <TextBox Margin="12" VerticalAlignment="Center" FontSize="14"/>
+                    <TextBlock Text="아이디를 입력하세요" Foreground="LightGray" Margin="12" VerticalAlignment="Center" FontSize="14" x:Name="IdNullText" MouseLeftButtonDown="IdNullText_MouseLeftButtonDown"/>
+                </Grid-->
                 <StackPanel Background="White" Margin="0, 10, 0, 10">
                     <Border BorderThickness="0.5" Style="{DynamicResource ContentBorder}">
                         <StackPanel Style="{DynamicResource ContentStackPanelHo}">
@@ -49,20 +53,24 @@
                                     <ImageBrush ImageSource="Image/NameBackground.jpg" AlignmentX="Left" Stretch="Uniform"/>
                                 </TextBox.Background>
                             </TextBox>
-                            <RadioButton GroupName="Gender" x:Name="Male" Checked="changeGender" Content="남자" Style="{DynamicResource GenderRadio}"/>
+                            <RadioButton GroupName="Gender" x:Name="Male" Checked="changeGender" IsChecked="True" Content="남자" Style="{DynamicResource GenderRadio}"/>
                             <RadioButton GroupName="Gender" x:Name="Female" Checked="changeGender" Content="여자" Style="{DynamicResource GenderRadio}"/>
                         </StackPanel>
                     </Border>
                     <Border BorderThickness="0.5 0 0.5 0.5" Style="{DynamicResource ContentBorder}">
                         <StackPanel Style="{DynamicResource ContentStackPanelHo}">
                             <Border BorderThickness="0 0 0.5 0" Style="{DynamicResource ContentBorder}">
-                                <TextBlock Text="생일" Style="{DynamicResource BirthTextBlock}" Margin="5 0 15 0"></TextBlock>
+                                <TextBlock Style="{DynamicResource BirthTextBlock}" Margin="0 0 10 0">
+                                    <TextBlock.Background>
+                                        <ImageBrush ImageSource="Image/BirthBackground.jpg" AlignmentX="Left" Stretch="Uniform"/>
+                                    </TextBlock.Background>
+                                </TextBlock>
                             </Border>
-                            <TextBox x:Name="Year" TextCompositionManager.PreviewTextInput="InputOnlyInt" Style="{DynamicResource BirthTextBox}"/>
+                            <TextBox x:Name="Year" MaxLength="4" TextCompositionManager.PreviewTextInput="InputOnlyInt" Style="{DynamicResource BirthTextBox}"/>
                             <TextBlock Text="년" Style="{DynamicResource BirthTextBlock}"/>
-                            <TextBox x:Name="Month" TextCompositionManager.PreviewTextInput="InputOnlyInt" Style="{DynamicResource BirthTextBox}"/>
+                            <TextBox x:Name="Month" MaxLength="2" TextCompositionManager.PreviewTextInput="InputOnlyInt" Style="{DynamicResource BirthTextBox}"/>
                             <TextBlock Text="월" Style="{DynamicResource BirthTextBlock}"/>
-                            <TextBox x:Name="Day" TextCompositionManager.PreviewTextInput="InputOnlyInt" Style="{DynamicResource BirthTextBox}"/>
+                            <TextBox x:Name="Day" MaxLength="2" TextCompositionManager.PreviewTextInput="InputOnlyInt" Style="{DynamicResource BirthTextBox}"/>
                             <TextBlock Text="일" Style="{DynamicResource BirthTextBlock}"/>
                         </StackPanel>
                     </Border>
